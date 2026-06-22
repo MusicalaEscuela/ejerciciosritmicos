@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 150" role="img" aria-label="Corchea (una sola)">
+  <rect x="50" y="28" width="5" height="94" rx="2.5" fill="#1a1340"/>
+  <!-- Corchete (bandera) de UNA sola corchea -->
+  <path d="M53,28 C 78,40 84,66 70,92 C 80,66 74,46 53,46 Z" fill="#1a1340"/>
+  <ellipse cx="33" cy="120" rx="21" ry="14" fill="#1a1340" transform="rotate(-20 33 120)"/>
+</svg>

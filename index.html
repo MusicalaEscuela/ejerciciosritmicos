@@ -69,7 +69,7 @@
               <b>Redonda</b> · 4 tiempos<br>
               <small>Gesto: <b>autoabrazo</b> sostenido todo el compás.</small>
             </div>
-            <img class="tag-img" src="redonda.png" alt="Símbolo de redonda" loading="lazy">
+            <img class="tag-img" src="redonda.svg" alt="Símbolo de redonda" loading="lazy">
           </article>
 
           <article class="figure">
@@ -78,7 +78,7 @@
               <b>Blanca</b> · 2 tiempos<br>
               <small>Gesto: <b>chasquido</b> con ambas manos por 2 pulsos.</small>
             </div>
-            <img class="tag-img" src="blanca.png" alt="Símbolo de blanca" loading="lazy">
+            <img class="tag-img" src="blanca.svg" alt="Símbolo de blanca" loading="lazy">
           </article>
 
           <article class="figure">
@@ -87,16 +87,16 @@
               <b>Negra</b> · 1 tiempo<br>
               <small>Gesto: <b>aplauso</b> limpio en cada pulso.</small>
             </div>
-            <img class="tag-img" src="negra.png" alt="Símbolo de negra" loading="lazy">
+            <img class="tag-img" src="negra.svg" alt="Símbolo de negra" loading="lazy">
           </article>
 
           <article class="figure">
             <img src="piernas.png" alt="Persona golpeando piernas alternadamente, gesto de corchea" loading="lazy">
             <div>
-              <b>Corchea</b> · 1/2 tiempo<br>
+              <b>Corchea</b> · ½ tiempo<br>
               <small>Gesto: golpes alternados en <b>piernas</b> (izq-der-izq-der...).</small>
             </div>
-            <img class="tag-img" src="corchea.png" alt="Símbolo de corchea" loading="lazy">
+            <img class="tag-img" src="corchea.svg" alt="Símbolo de corchea" loading="lazy">
           </article>
         </div>
 
@@ -107,101 +107,42 @@
 
       <div>
         <h3>Figuras musicales</h3>
-        <p class="note">Referencia visual de los símbolos.</p>
+        <p class="note">Referencia visual de los símbolos y su duración en 4/4.</p>
         <div class="fig-symbols">
           <figure class="sym">
-            <img src="redonda.png" alt="Figura musical redonda" loading="lazy">
-            <figcaption>Redonda</figcaption>
+            <img src="redonda.svg" alt="Figura musical redonda" loading="lazy">
+            <figcaption>Redonda<br><small>4 tiempos</small></figcaption>
           </figure>
           <figure class="sym">
-            <img src="blanca.png" alt="Figura musical blanca" loading="lazy">
-            <figcaption>Blanca</figcaption>
+            <img src="blanca.svg" alt="Figura musical blanca" loading="lazy">
+            <figcaption>Blanca<br><small>2 tiempos</small></figcaption>
           </figure>
           <figure class="sym">
-            <img src="negra.png" alt="Figura musical negra" loading="lazy">
-            <figcaption>Negra</figcaption>
+            <img src="negra.svg" alt="Figura musical negra" loading="lazy">
+            <figcaption>Negra<br><small>1 tiempo</small></figcaption>
           </figure>
           <figure class="sym">
-            <img src="corchea.png" alt="Figura musical corchea" loading="lazy">
-            <figcaption>Corchea</figcaption>
+            <img src="corchea.svg" alt="Figura musical corchea" loading="lazy">
+            <figcaption>Corchea<br><small>½ tiempo</small></figcaption>
           </figure>
         </div>
       </div>
     </section>
 
-    <!-- ====== DEMOS GUIADAS ====== -->
-    <section class="card section" id="demoW">
-      <h2>Demo guiada 1: 4 redondas (4 compases)</h2>
-      <p class="note">Cada recuadro representa un compás de 4/4 con una redonda. Se ilumina completo mientras suena el metrónomo.</p>
-
-      <div class="toolbar">
-        <label for="bpm">BPM:
-          <input id="bpm" type="number" min="40" max="200" step="1" value="72">
-        </label>
-        <button class="chip" id="playW">▶ Reproducir</button>
-        <button class="btn ghost" id="stopW">■ Detener</button>
-      </div>
-
-      <div class="cells" id="cellsW" aria-label="Secuencia de 4 redondas">
-        <div class="cell" style="background-image:url(redonda.png)"></div>
-        <div class="cell" style="background-image:url(redonda.png)"></div>
-        <div class="cell" style="background-image:url(redonda.png)"></div>
-        <div class="cell" style="background-image:url(redonda.png)"></div>
-      </div>
-      <div class="movement" id="movementW" aria-live="polite"></div>
+    <!-- ====== CÓMO USAR LOS EJERCICIOS ====== -->
+    <section class="card howto">
+      <h2>Cómo usar los ejercicios</h2>
+      <ul class="howto-list">
+        <li><b>Compases divididos:</b> cada ejercicio está separado por barras de compás (4/4). Cuenta 1-2-3-4 en cada uno.</li>
+        <li><b>Preconteo:</b> activa <b>Preconteo</b> para tener un compás de cuenta (1-2-3-4) antes de empezar y alistarte.</li>
+        <li><b>Repeticiones:</b> elige cuántas <b>vueltas</b> seguidas se toca el ejercicio; verás "Vuelta 2 de 3" mientras practicas.</li>
+        <li><b>Pantalla completa:</b> pulsa <b>⛶</b> para ver el ejercicio en grande, con la imagen del gesto que toca en cada figura.</li>
+        <li><b>BPM:</b> empieza lento (60–72) y sube cuando lo domines. Sugerencia: <b>3 repeticiones</b> por ejercicio.</li>
+      </ul>
     </section>
 
-    <section class="card section" id="demoH">
-      <h2>Demo guiada 2: 8 blancas (4 compases)</h2>
-      <p class="note">Dos blancas por compás en 4/4. Cada recuadro dura 2 pulsos.</p>
-
-      <div class="toolbar">
-        <label for="bpmH">BPM:
-          <input id="bpmH" type="number" min="40" max="200" step="1" value="72">
-        </label>
-        <button class="chip" id="playH">▶ Reproducir</button>
-        <button class="btn ghost" id="stopH">■ Detener</button>
-      </div>
-
-      <div class="cells" id="cellsH" aria-label="Secuencia de 8 blancas">
-        ${Array(8).fill('<div class="cell" style="background-image:url(blanca.png)"></div>').join('')}
-      </div>
-      <div class="movement" id="movementH" aria-live="polite"></div>
-    </section>
-
-    <section class="card section" id="demoQ">
-      <h2>Demo guiada 3: 16 negras (4 compases)</h2>
-      <p class="note">Cuatro negras por compás en 4/4. Cada recuadro dura 1 pulso.</p>
-
-      <div class="toolbar">
-        <label for="bpmQ">BPM:
-          <input id="bpmQ" type="number" min="40" max="200" step="1" value="72">
-        </label>
-        <button class="chip" id="playQ">▶ Reproducir</button>
-        <button class="btn ghost" id="stopQ">■ Detener</button>
-      </div>
-
-      <div class="cells" id="cellsQ" aria-label="Secuencia de 16 negras">
-        ${Array(16).fill('<div class="cell" style="background-image:url(negra.png)"></div>').join('')}
-      </div>
-      <div class="movement" id="movementQ" aria-live="polite"></div>
-    </section>
-
-    <section class="card section" id="demoF">
-      <h2>Demo guiada 4: Fusión (4 compases)</h2>
-      <p class="note">Mezcla automática de redondas, blancas y negras. Siempre suma 16 tiempos (4/4 × 4 compases) y alterna figuras.</p>
-
-      <div class="toolbar">
-        <label for="bpmF">BPM:
-          <input id="bpmF" type="number" min="40" max="200" step="1" value="72">
-        </label>
-        <button class="chip" id="playF">▶ Reproducir</button>
-        <button class="btn ghost" id="stopF">■ Detener</button>
-      </div>
-
-      <div class="cells" id="cellsF" aria-label="Fusión automática"></div>
-      <div class="movement" id="movementF" aria-live="polite"></div>
-    </section>
+    <!-- ====== CATÁLOGO DE EJERCICIOS (lo llena app.js) ====== -->
+    <div id="catalog"></div>
 
     <!-- ====== FOOTER ====== -->
     <footer class="footer">
@@ -210,9 +151,12 @@
         Sugerencia: <b>3 repeticiones por ejercicio</b>.
         Cambia el BPM y repite con tu instrumento (notas sueltas o acordes).
       </p>
-      <p class="creditos">© Musicala · Diseño y desarrollo didáctico · Alek & Cata</p>
+      <p class="creditos">© Musicala · Diseño y desarrollo didáctico · Alek &amp; Cata</p>
     </footer>
   </main>
+
+  <!-- ====== OVERLAY PANTALLA COMPLETA (lo llena app.js) ====== -->
+  <div id="fs" class="fs" hidden aria-modal="true" role="dialog"></div>
 
   <script src="app.js" defer></script>
 </body>
