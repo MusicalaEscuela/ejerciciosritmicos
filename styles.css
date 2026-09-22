@@ -349,6 +349,48 @@ button, .chip, .btn {
   border-left: 6px solid var(--magenta-brahms);
 }
 
+/* ====== Banco de motivos del cuaderno ====== */
+.motif-bank { scroll-margin-top: 1rem; }
+.motif-viewer {
+  border: 1px solid var(--gris-haydn);
+  border-radius: 16px;
+  padding: 1rem;
+  background: linear-gradient(180deg, #fff 0%, #f7f8ff 100%);
+}
+.motif-reference { margin-top: 0.8rem; color: var(--azul-mozart); }
+.motif-reference summary { cursor: pointer; font-weight: 600; }
+.motif-reference .motif-sheet { margin-top: 0.5rem; }
+.motif-sheet {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  min-height: 70px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+.motif-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+}
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+.motif-picker {
+  display: grid;
+  grid-template-columns: repeat(20, minmax(0, 1fr));
+  gap: 0.35rem;
+  margin-top: 1rem;
+}
+.motif-choice {
+  min-height: 36px;
+  padding: 0.2rem;
+  color: var(--azul-bach);
+  background: #f3f4fb;
+  border: 1px solid transparent;
+}
+.motif-choice:hover, .motif-choice:focus-visible { border-color: var(--violeta-beethoven); }
+.motif-choice.selected { color: #fff; background: var(--violeta-beethoven); }
+
 /* ====== Runner (bloque ejecutable) ====== */
 .runner-head {
   display: flex;
@@ -622,5 +664,57 @@ body.no-scroll { overflow: hidden; }
   .staff .cell[data-t="h"] { width: 58px; }
   .staff .cell[data-t="q"] { width: 40px; }
   .staff .cell[data-t="e"] { width: 26px; }
+}
+
+/* Teléfonos: cada control es táctil, el ritmo no queda recortado y el banco
+   permite estudiar una partitura completa antes de pasar a la siguiente. */
+@media (max-width: 600px) {
+  .wrap { padding: 1.5rem 0.85rem; }
+  .hero-title { font-size: 2rem; }
+  .card { padding: 1.1rem; margin-bottom: 1.5rem; border-radius: 17px; }
+  .howto { display: none; }
+  .group-title { margin: 1.2rem 0 0.75rem; font-size: 1.35rem; }
+  .runner-head { align-items: flex-start; flex-direction: column; }
+  .toolbar { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; }
+  .toolbar label, .toolbar button { min-height: 44px; display: flex; align-items: center; }
+  .toolbar input[type="number"] { width: 58px; min-height: 38px; margin-left: 0.25rem; }
+  .toolbar .chip, .toolbar .btn { justify-content: center; padding: 0.55rem; }
+  .toolbar .btn:last-child { grid-column: span 2; }
+  .pulsebar { justify-content: space-between; gap: 0.5rem; }
+  .pulse-dots { gap: 0.35rem; }
+  .pulse-dot { width: 34px; height: 34px; font-size: 0.9rem; }
+  .rep-info { min-width: auto; font-size: 0.85rem; }
+  .staff {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    padding: 0.65rem 0;
+    margin-inline: -0.15rem;
+  }
+  .measure { padding: 0.3rem 0.65rem; scroll-snap-align: start; }
+  .staff .cell[data-t="w"] { width: 76px; }
+  .staff .cell[data-t="h"] { width: 48px; }
+  .staff .cell[data-t="q"] { width: 34px; }
+  .staff .cell[data-t="e"] { width: 22px; }
+  .staff .cell { height: 44px; }
+  .stage { min-height: 130px; }
+  .gesture-big { width: 105px; height: 105px; }
+  .motif-viewer { padding: 0.75rem; }
+  .motif-sheet { min-height: 52px; }
+  .motif-nav button { min-height: 44px; flex: 1; }
+  .motif-picker { grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 0.3rem; }
+  .motif-choice { min-height: 40px; font-size: 0.85rem; }
+  .fs { padding: 0 0.75rem 1rem; }
+  .fs .runner.big { padding: 1rem; }
+  .runner.big .pulse-dot { width: 42px; height: 42px; font-size: 1rem; }
+  .staff.big { overflow-x: auto; }
+  .staff.big .cell { height: 58px; }
+  .staff.big .cell[data-t="w"] { width: 112px; }
+  .staff.big .cell[data-t="h"] { width: 68px; }
+  .staff.big .cell[data-t="q"] { width: 44px; }
+  .staff.big .cell[data-t="e"] { width: 28px; }
+  .stage.big { min-height: 35vh; }
+  .stage.big .gesture-big { width: min(45vw, 220px); height: min(45vw, 220px); }
 }
 

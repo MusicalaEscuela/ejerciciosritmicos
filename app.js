@@ -65,6 +65,11 @@ const exercises = [
   { nombre: '20 · Todo junto',              nivel: 'Corcheas', measures: [['h','q','e','e'], ['e','e','q','h'], ['q','e','e','q','q'], W] },
 ];
 
+/* ------------------------- Banco Motivos Rítmicos ------------------------ */
+// Los 200 motivos se conservan tal como aparecen en el cuaderno entregado.
+// Se muestran como partitura para no traducir ni alterar su escritura musical.
+const motifImage = (number) => `motivos/motivo-${String(number).padStart(3, '0')}.png`;
+
 /* ------------------------ Generador de combinaciones ---------------------- */
 // Construye un compás (suma 4). Las corcheas se agregan de a pares.
 function randomMeasure(allowEighth) {
@@ -296,6 +301,10 @@ function buildRunner(ex, big) {
         else c.classList.remove('rep');
       });
       measureEls.forEach((m, i) => m.classList.toggle('on', i === n.mi));
+      if (window.matchMedia('(max-width: 600px)').matches && staff.scrollWidth > staff.clientWidth) {
+        const activeMeasure = measureEls[n.mi];
+        staff.scrollTo({ left: activeMeasure.offsetLeft - staff.offsetLeft, behavior: prefersReduced ? 'instant' : 'smooth' });
+      }
       countEl.classList.remove('show');
 
       gImg.src = gesture[n.tok]; gImg.alt = gestureName[n.tok];
@@ -313,7 +322,7 @@ function buildRunner(ex, big) {
 
   play.addEventListener('click', () => player.toggle());
   stopBtn.addEventListener('click', () => player.stop());
-  fsBtn.addEventListener('click', () => { big ? closeFullscreen() : openFullscreen(ex); });
+  fsBtn.addEventListener('click', () => { player.stop(); big ? closeFullscreen() : openFullscreen(ex); });
 
   return { root, player };
 }
@@ -363,6 +372,67 @@ function exerciseCard(ex) {
 
 (function mountCatalog() {
   if (!catalog) return;
+
+  // ---- Banco de 200 motivos del cuaderno ----
+  const bankTitle = el('h2', 'group-title');
+  bankTitle.textContent = 'Banco de 200 motivos rítmicos';
+  catalog.appendChild(bankTitle);
+
+  const bank = el('section', 'card motif-bank');
+  const intro = el('p', 'note');
+  intro.textContent = 'Elige un motivo y practícalo con el mismo preconteo, sonido y gestos de los demás ejercicios.';
+  const viewer = el('div', 'motif-viewer');
+  const scoreReference = el('details', 'motif-reference');
+  const scoreSummary = el('summary'); scoreSummary.textContent = 'Ver partitura original del cuaderno';
+  const sheet = el('img', 'motif-sheet'); sheet.alt = 'Partitura original del motivo rítmico 1';
+  scoreReference.append(scoreSummary, sheet);
+  const nav = el('div', 'motif-nav');
+  const previous = el('button', 'btn ghost'); previous.type = 'button'; previous.textContent = '← Anterior';
+  const next = el('button', 'chip'); next.type = 'button'; next.textContent = 'Siguiente →';
+  nav.append(previous, next);
+
+  const picker = el('div', 'motif-picker');
+  picker.setAttribute('aria-label', 'Seleccionar motivo rítmico');
+  let currentMotif = 1;
+  const motifButtons = [];
+  let motifRunner = null;
+  const showMotif = (number, shouldFocus = false) => {
+    if (motifRunner) motifRunner.player.stop();
+    currentMotif = Math.max(1, Math.min(200, number));
+    const pattern = motifPatterns[currentMotif - 1];
+    const ex = {
+      nombre: `Motivo ${currentMotif}`,
+      nivel: 'Banco de motivos',
+      measures: pattern.split('|').map((measure) => [...measure]),
+    };
+    const fresh = buildRunner(ex, false);
+    viewer.replaceChildren(fresh.root, scoreReference, nav);
+    motifRunner = fresh;
+    sheet.src = motifImage(currentMotif);
+    sheet.alt = `Partitura original del motivo rítmico ${currentMotif}`;
+    previous.disabled = currentMotif === 1;
+    next.disabled = currentMotif === 200;
+    motifButtons.forEach((button, index) => {
+      const selected = index + 1 === currentMotif;
+      button.classList.toggle('selected', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
+    if (shouldFocus && window.matchMedia('(max-width: 600px)').matches) {
+      viewer.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
+    }
+  };
+  for (let number = 1; number <= 200; number++) {
+    const button = el('button', 'motif-choice');
+    button.type = 'button'; button.textContent = number;
+    button.setAttribute('aria-label', `Ver motivo ${number}`);
+    button.addEventListener('click', () => showMotif(number, true));
+    motifButtons.push(button); picker.appendChild(button);
+  }
+  previous.addEventListener('click', () => showMotif(currentMotif - 1, true));
+  next.addEventListener('click', () => showMotif(currentMotif + 1, true));
+  bank.append(intro, viewer, picker);
+  catalog.appendChild(bank);
+  showMotif(1);
 
   // Agrupar por nivel
   const grupos = {};
